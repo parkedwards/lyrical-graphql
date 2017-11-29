@@ -4,15 +4,19 @@ import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { Router, Route, hashHistory, IndexRoute } from "react-router";
 
-import App from './components/App';
+import App from "./components/App";
 import SongList from "./components/SongList";
-import SongCreate from './components/SongCreate';
-import SongDetail from './components/SongDetail';
+import SongCreate from "./components/SongCreate";
+import SongDetail from "./components/SongDetail";
 
-import './style/style.css'; // styles!
+import "./style/style.css"; // styles!
 
 // should remind you of Redux patterns
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  // fetch all data, use the data's id as the identifier in the Apollo Store
+  // this helps Store create relations
+  dataIdFromObject: obj => obj.id
+});
 
 const Root = () => {
   return (

@@ -11,17 +11,16 @@ class SongDetail extends Component {
   requestData() {
     const { params: { id } } = this.props;
   }
-  
+
   render() {
     const { data: { song } } = this.props;
 
     if (!song) return <div>Fetching Song...</div>;
-
     return (
       <div>
         <Link to="/">Back</Link>
         <h3>{song.title}</h3>
-        <LyricList song={song} />
+        <LyricList lyrics={song.lyrics} />
         <LyricCreate songId={this.props.params.id} />
       </div>
     );

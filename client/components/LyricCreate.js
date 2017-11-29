@@ -23,7 +23,7 @@ class LyricCreate extends Component {
         content,
         songId
       },
-      refetchQueries: [{ query: getSongById, variables: { id: songId } }]
+      // refetchQueries: [{ query: getSongById, variables: { id: songId } }]
     });
     this.setState({ content: "" });
   }
@@ -46,7 +46,9 @@ const addLyricToSong = gql`
     addLyricToSong(content: $content, songId: $songId) {
       id
       lyrics {
+        id
         content
+        likes
       }
     }
   }
